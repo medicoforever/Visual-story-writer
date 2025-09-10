@@ -1,0 +1,5 @@
+{
+  "name": "Visual Story Writer",
+  "description": "An application that automatically visualizes a story's chronological events, characters, actions, and movements. Users can edit the story by manipulating these visual representations, with an AI suggesting text edits to reflect the changes.",
+  "requestFramePermissions": []
+}
