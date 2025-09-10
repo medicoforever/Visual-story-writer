@@ -1,3 +1,4 @@
+
 import React, { useMemo, useCallback } from 'react';
 import { createEditor, Descendant, Editor, Element, Range, Node as SlateNode } from 'slate';
 import { Slate, Editable, withReact, RenderLeafProps } from 'slate-react';
@@ -98,12 +99,12 @@ export default function TextEditor() {
 
   return (
     <div className={`h-full w-full p-6 sm:p-8 overflow-y-auto text-lg leading-relaxed text-gray-300 font-serif relative ${isLoading ? 'opacity-50' : ''}`}>
-        <Slate 
+        <Slate
             editor={editor}
-            {/* FIX: The `value` prop is not available in this version of Slate.
-            Using `initialValue` to set the editor's content, and `key` to force
-            a re-render when the text is updated programmatically, which mimics
-            the behavior of a controlled component. */}
+            // FIX: The `value` prop is not available in this version of Slate.
+            // Using `initialValue` to set the editor's content, and `key` to force
+            // a re-render when the text is updated programmatically, which mimics
+            // the behavior of a controlled component.
             initialValue={textState}
             key={text}
             onChange={(value) => {

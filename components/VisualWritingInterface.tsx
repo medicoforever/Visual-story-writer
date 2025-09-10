@@ -1,4 +1,5 @@
 
+
 import React, { useEffect, useRef } from 'react';
 import { useAppStore, useAppActions } from '../hooks/useAppStore';
 import TextEditor from './TextEditor';
@@ -36,8 +37,8 @@ export default function VisualWritingInterface() {
             runLayout('locations', locationNodes, setLocationNodes, center, 120);
         }
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedTab, entityNodes.length, locationNodes.length]);
+    // FIX: Add setter functions to dependency array to satisfy exhaustive-deps rule.
+  }, [selectedTab, entityNodes.length, locationNodes.length, setEntityNodes, setLocationNodes]);
 
 
   return (

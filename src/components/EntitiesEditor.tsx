@@ -1,10 +1,11 @@
+
 import React, { useMemo, memo } from 'react';
 import { Background, Controls, ReactFlow, Handle, Position, applyNodeChanges, applyEdgeChanges, type NodeProps, type EdgeProps, ConnectionMode, type NodeChange, type EdgeChange, type Node, type Edge, getEdgeCenter } from '@xyflow/react';
 import { useAppStore, useAppActions } from '../hooks/useAppStore';
 import { type EntityNodeData, type ActionEdgeData, type EntityNode, type ActionEdge } from '../types';
 
-// FIX: Correctly type the props for the memoized component by destructuring and typing props inline.
-const EntityNodeComponent = memo(({ id, data, selected }: NodeProps<EntityNodeData>) => {
+// FIX: Correctly type the props for the memoized component to fix type inference issues with `data`.
+const EntityNodeComponent: React.FC<NodeProps<EntityNodeData>> = memo(({ id, data, selected }) => {
   return (
     <div className={`drag-handle rounded-lg shadow-lg transition-all duration-200 ${selected ? 'ring-2 ring-purple-500' : 'ring-1 ring-gray-700'} bg-gray-800 w-48`}>
       <div className="flex items-center p-3 border-b border-gray-700">
@@ -36,8 +37,8 @@ const EntityNodeComponent = memo(({ id, data, selected }: NodeProps<EntityNodeDa
 });
 EntityNodeComponent.displayName = 'EntityNodeComponent';
 
-// FIX: Correctly type the props for the memoized component by destructuring and typing props inline.
-const ActionEdgeComponent = memo(({ id, sourceX, sourceY, targetX, targetY, label, markerEnd }: EdgeProps<ActionEdgeData>) => {
+// FIX: Correctly type the props for the memoized component to fix type inference issues with `label`.
+const ActionEdgeComponent: React.FC<EdgeProps<ActionEdgeData>> = memo(({ id, sourceX, sourceY, targetX, targetY, label, markerEnd }) => {
   const [edgeCenterX, edgeCenterY] = getEdgeCenter({
     sourceX,
     sourceY,

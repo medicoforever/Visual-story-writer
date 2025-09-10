@@ -1,4 +1,5 @@
 
+
 import { type Node, type Edge } from '@xyflow/react';
 import { type Descendant } from 'slate';
 
@@ -8,14 +9,12 @@ export interface EntityProperty {
 }
 
 export interface Entity {
-  [key: string]: unknown;
   name: string;
   emoji: string;
   properties: EntityProperty[];
 }
 
 export interface Location {
-  [key: string]: unknown;
   name: string;
   emoji: string;
 }
@@ -35,7 +34,6 @@ export type EntityNode = Node<EntityNodeData, 'entityNode'>;
 export type LocationNode = Node<LocationNodeData, 'locationNode'>;
 
 export interface ActionEdgeData {
-  [key: string]: unknown;
   name: string;
   passage: string;
   sourceLocation: string;
