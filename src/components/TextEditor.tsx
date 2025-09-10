@@ -1,4 +1,3 @@
-
 import React, { useMemo, useCallback } from 'react';
 import { createEditor, Descendant, Editor, Element, Range, Node as SlateNode } from 'slate';
 import { Slate, Editable, withReact, RenderLeafProps } from 'slate-react';
@@ -101,12 +100,12 @@ export default function TextEditor() {
     <div className={`h-full w-full p-6 sm:p-8 overflow-y-auto text-lg leading-relaxed text-gray-300 font-serif relative ${isLoading ? 'opacity-50' : ''}`}>
         <Slate 
             editor={editor}
+            {/* FIX: The `value` prop is not available in this version of Slate.
+            Using `initialValue` to set the editor's content, and `key` to force
+            a re-render when the text is updated programmatically, which mimics
+            the behavior of a controlled component. */}
             initialValue={textState}
-            // This key is crucial. It tells React to create a new Slate instance
-            // whenever the text is updated from the outside (e.g., by the AI),
-            // which solves the state synchronization errors (like React error #185).
             key={text}
-            // FIX: The `onValueChange` prop does not exist on Slate. It should be `onChange`.
             onChange={(value) => {
                 const isAstChange = editor.operations.some(op => 'set_selection' !== op.type);
                 if (isAstChange) {
