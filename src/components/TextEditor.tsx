@@ -1,4 +1,3 @@
-
 import React, { useMemo, useCallback } from 'react';
 import { createEditor, Descendant, Editor, Element, Range, Node as SlateNode } from 'slate';
 import { Slate, Editable, withReact, RenderLeafProps } from 'slate-react';
@@ -13,9 +12,10 @@ const Leaf = ({ attributes, children, leaf }: RenderLeafProps) => {
 
 export default function TextEditor() {
   const editor = useMemo(() => withReact(createEditor()), []);
-  const { textState, text, actionEdges, filteredActionsSegment, highlightedActionsSegment, selectedEdges, selectedNodes } = useAppStore();
+  const { textState, actionEdges, filteredActionsSegment, highlightedActionsSegment, selectedEdges, selectedNodes } = useAppStore();
   const { setTextState, setFilteredActionsSegment, setHighlightedActionsSegment } = useAppActions();
   const isLoading = useAppStore(state => state.isLoading);
+  const text = useAppStore(state => state.text);
 
   const textActionMatches = useMemo(() => actionEdges.map(edge => ({
     source: edge.source.replace(/^entity-/, ''),

@@ -1,4 +1,3 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { type Action, type Entity, type Location } from '../types';
 

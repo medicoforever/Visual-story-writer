@@ -1,4 +1,3 @@
-
 import { create } from 'zustand';
 import { type Node, type Edge, MarkerType } from '@xyflow/react';
 import { type Descendant, Node as SlateNode } from 'slate';
@@ -116,7 +115,9 @@ export const useAppStore = create<AppState>((set, get) => ({
         set({ isLoading: false, isStale: false });
     },
     
+    // FIX: Ensure dragging nodes marks the state as stale
     setEntityNodes: (nodes) => set(state => ({ entityNodes: typeof nodes === 'function' ? nodes(state.entityNodes) : nodes, isStale: true })),
+    // FIX: Ensure dragging nodes marks the state as stale
     setLocationNodes: (nodes) => set(state => ({ locationNodes: typeof nodes === 'function' ? nodes(state.locationNodes) : nodes, isStale: true })),
     setActionEdges: (edges) => set(state => ({ actionEdges: typeof edges === 'function' ? edges(state.actionEdges) : edges, isStale: true })),
 

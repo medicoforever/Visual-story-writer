@@ -1,11 +1,11 @@
-
 import React, { useMemo, memo } from 'react';
 import { Background, Controls, ReactFlow, applyNodeChanges, Handle, Position, type NodeProps, type NodeChange } from '@xyflow/react';
 import { useAppStore, useAppActions } from '../hooks/useAppStore';
 import { type LocationNode, type LocationNodeData } from '../types';
 
 // FIX: Correctly type the props for the memoized component to fix type inference issues with `data`.
-const LocationNodeComponent: React.FC<NodeProps<LocationNodeData>> = memo(({ data, selected }) => {
+const LocationNodeComponent = memo((props: NodeProps<LocationNodeData>) => {
+    const { data, selected } = props;
     return (
         <div className={`drag-handle flex flex-col items-center justify-center w-40 h-40 rounded-full shadow-lg transition-all duration-200 ${selected ? 'ring-2 ring-purple-500' : 'ring-1 ring-gray-700'} bg-gray-800`}>
             <div className="text-5xl mb-2">{data.emoji}</div>

@@ -7,16 +7,18 @@ export interface EntityProperty {
   value: number;
 }
 
-export interface Entity {
+// FIX: Changed to type to resolve generic constraint issues with React Flow
+export type Entity = {
   name: string;
   emoji: string;
   properties: EntityProperty[];
-}
+};
 
-export interface Location {
+// FIX: Changed to type to resolve generic constraint issues with React Flow
+export type Location = {
   name: string;
   emoji: string;
-}
+};
 
 export interface Action {
   name: string;
@@ -32,12 +34,13 @@ export type LocationNodeData = Location;
 export type EntityNode = Node<EntityNodeData, 'entityNode'>;
 export type LocationNode = Node<LocationNodeData, 'locationNode'>;
 
-export interface ActionEdgeData {
+// FIX: Changed to type to resolve generic constraint issues with React Flow
+export type ActionEdgeData = {
   name:string;
   passage: string;
   sourceLocation: string;
   targetLocation: string;
-}
+};
 
 export type ActionEdge = Edge<ActionEdgeData>;
 
